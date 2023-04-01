@@ -1,5 +1,6 @@
 package classes;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -9,7 +10,7 @@ public class Banco {
     private String cnpj;
     private String endereco;
     private Conta contaLogada;
-    private List<Agencia> agencias;
+    private List<Agencia> agencias = new ArrayList<>();
 
     public Banco(int numero, String nome, String cnpj, String endereco) {
         this.numero = numero;

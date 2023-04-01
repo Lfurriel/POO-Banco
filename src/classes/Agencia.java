@@ -1,12 +1,13 @@
 package classes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Agencia {
     private int codigo;
     private String nome;
     private String endereco;
-    private List<Conta> contas;
+    private List<Conta> contas = new ArrayList<>();
 
     public Agencia(int codigo, String nome, String endereco) {
         this.codigo = codigo;
