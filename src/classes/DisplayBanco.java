@@ -27,6 +27,7 @@ public class DisplayBanco {
             numAgencia = sc.nextInt();
             System.out.print("Digite o numero da conta: ");
             numConta = sc.nextInt();
+            sc.nextLine();
             System.out.print("Digite a senha da conta: ");
             senha = sc.nextLine();
 
@@ -43,8 +44,8 @@ public class DisplayBanco {
         do {
 
             System.out.println("\n\t1- Consultar saldo");
-            System.out.println("\t2- Depósito");
-            System.out.println("\t3- Sacar");
+            System.out.println("\t2- Sacar");
+            System.out.println("\t3- Depositar");
             System.out.println("\t4- Transferência");
             System.out.println("\t5- Pix");
             System.out.println("\t6- SAIR");
@@ -62,7 +63,7 @@ public class DisplayBanco {
                 case 5 -> operacaoPix();
                 case 6 -> operacaoSair();
             }
-        } while (op != 6 && (op < 1 || op > 5));
+        } while (op != 6);
 
     }
 

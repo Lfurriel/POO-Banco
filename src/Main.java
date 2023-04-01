@@ -10,7 +10,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws Exception {
         DisplayBanco displayBanco = lerBanco();
-        imprimir(displayBanco);
+        //imprimir(displayBanco);
+
+        displayBanco.login();
     }
 
     public static DisplayBanco lerBanco() throws Exception {
