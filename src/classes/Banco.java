@@ -5,13 +5,20 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Banco {
-    private int numero;
-    private String nome;
-    private String cnpj;
-    private String endereco;
-    private Conta contaLogada;
-    private List<Agencia> agencias = new ArrayList<>();
+    private int numero; //Número do banco
+    private String nome; //Nome do banco
+    private String cnpj; //CNPJ do banco
+    private String endereco; //Endereço do banco
+    private Conta contaLogada; //Conta que será realizada as operações
+    private List<Agencia> agencias = new ArrayList<>(); //Lista das agências de banco
 
+    /**
+     * Método construtor da classe Banco
+     * @param numero Número do banco
+     * @param nome Nome do banco
+     * @param cnpj CNPJ do banco
+     * @param endereco Endereço do banco
+     */
     public Banco(int numero, String nome, String cnpj, String endereco) {
         this.numero = numero;
         this.nome = nome;
@@ -19,46 +26,55 @@ public class Banco {
         this.endereco = endereco;
     }
 
+    /**
+     * @return Número cadastrado do banco
+     */
     public int getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
-
+    /**
+     * @return Nome cadastrado do banco
+     */
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
+    /**
+     * @return CNPJ cadastrado do banco
+     */
     public String getCnpj() {
         return cnpj;
     }
 
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
+    /**
+     * @return Endereço cadastrado do banco
+     */
     public String getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
+    /**
+     * @return Atributo 'contaLogada'
+     */
     public Conta getContaLogada() {
         return contaLogada;
     }
 
+    /**
+     * @return Lista de agências do banco
+     */
     public List<Agencia> getAgencias() {
         return agencias;
     }
 
+    /**
+     * Método usado para setar o atributo 'contaLogada'. Usa inicialmente o método buscarAgencia para encontrar a agência
+     * correspondente com o parâmetro 'numAgencia' e em seguida buscarConta com os parâmetros 'numConta' e 'senha'
+     * @param numAgencia Número da agência
+     * @param numConta Número da conta
+     * @param senha Senha do titular da conta
+     */
     public void logarCliente(int numAgencia, int numConta, String senha) {
         Agencia agencia = buscarAgencia(numAgencia);
         if (agencia != null) {
@@ -71,19 +87,37 @@ public class Banco {
         }
     }
 
+    /**
+     * Seta o atributo 'contaLogada' para null
+     */
     public void deslogarConta() {
         this.contaLogada = null;
     }
 
+    /**
+     * Adiciona na lista de agências do objeto Banco uma nova agência criada
+     * @param agencia Objeto instânciado de Agencia
+     */
     public void cadastrarAgencia(Agencia agencia) {
         agencias.add(agencia);
     }
 
+    /**
+     * Instancia um novo objeto de Agencia e adiciona na lista de agências do objeto Banco
+     * @param numAgencia Número da nova agência
+     * @param nome Nome da nova agência
+     * @param endereco Endereço da nova agência
+     */
     public void cadastrarAgencia(int numAgencia, String nome, String endereco) {
         Agencia agencia = new Agencia(numAgencia, nome, endereco);
         agencias.add(agencia);
     }
 
+    /**
+     * Percorre a lista de agências do objeto Banco buscando uma agência que corresponde com o parâmetro codigo
+     * @param codigo Numero da agência
+     * @return Objeto de Agencia caso encontrado || null caso contrário
+     */
     public Agencia buscarAgencia(int codigo) {
         for (Agencia a : agencias) {
             if (a.getCodigo() == codigo)
@@ -92,14 +126,29 @@ public class Banco {
         return null;
     }
 
+    /**
+     * Método intermediário para realizar um saque partindo do atributo 'contaLogada'
+     * @param valor Valor a ser sacado
+     * @return true caso foi possível realizar o saque || false caso contrário
+     */
     public boolean realizarSaque(double valor) {
         return contaLogada.sacar(valor);
     }
 
+    /**
+     * Método intermediário para realizar um depósito partindo do atributo 'contaLogada'
+     * @param valor Valor a ser depositado
+     */
     public void realizarDeposito(double valor) {
         contaLogada.despositar(valor);
     }
 
+    /**
+     * Buscamos a agência e conta que irá receber a tranferência, realiza um saque do atributo 'contaLogada' e, caso
+     * foi possível realizar o saque, deposita o mesmo valor na conta antes encontrada
+     * @param numAgencia Agencia da conta que receberá a transferêcnia
+     * @param numConta Número da conta que receberá a transferêcnia
+     */
     public void transferencia(int numAgencia, int numConta) {
 
         Scanner sc = new Scanner(System.in);
@@ -122,6 +171,11 @@ public class Banco {
 
     }
 
+    /**
+     * Busca uma conta partindo do parâmetro cpf e realiza o depósito na mesma caso a operação 'realizarSaque'
+     * foi possível partindo de 'contaLoada'
+     * @param cpf CPF (chave pix) da conta que irá receber a transferência
+     */
     public void pix(String cpf) {
         Scanner sc = new Scanner(System.in);
         Conta c = buscarChavePix(cpf);
@@ -136,6 +190,11 @@ public class Banco {
         }
     }
 
+    /**
+     * Busca dentre as agências e contas de Banco uma conta cujo cpf corresponda ao parâmetro passado
+     * @param cpf CPF (chave pix)
+     * @return Objeto da classe conta caso encontrada || null caso contrário
+     */
     private Conta buscarChavePix(String cpf) {
         for (Agencia a : agencias) {
             for (Conta c : a.getContas()) {

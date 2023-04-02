@@ -47,18 +47,30 @@ public class Agencia {
         contas.add(conta);
     }
 
-    public Conta buscarConta(int numConta, String senha) {
+    /**
+     * Método usado para buscar uma conta específica dentre a lista de contas no objeto agência instanciado
+     * @param numConta numero da conta a ser procurada
+     * @return Objeto Conta caso encontrada | null caso não econtre
+     */
+    public Conta buscarConta(int numConta) {
         for (Conta c : contas) {
-            if(c.getNumero() == numConta && c.validarSenha(senha))
+            if(c.getNumero() == numConta)
                 return c;
 
         }
         return null;
     }
 
-    public Conta buscarConta(int numConta) {
+    /**
+     * Sobrecarga do método buscar conta, dessa vez recebe também como parametro uma String 'senha', esse método será
+     * usado para 'logar' uma conta no banco
+     * @param numConta numero da conta a ser procurada
+     * @param senha senha da conta a ser procurada
+     * @return Objeto Conta caso encontrada | null caso não econtre
+     */
+    public Conta buscarConta(int numConta, String senha) {
         for (Conta c : contas) {
-            if(c.getNumero() == numConta)
+            if(c.getNumero() == numConta && c.validarSenha(senha))
                 return c;
 
         }

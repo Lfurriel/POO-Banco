@@ -102,7 +102,7 @@ public class Main {
 
         Banco banco = displayBanco.getMeuBanco();
         System.out.println("***************** " + banco.getNome() + " *****************");
-        System.out.println("  Numero: " + banco.getCnpj() + "\tEndereco: " + banco.getEndereco());
+        System.out.println("  CNPJ: " + banco.getCnpj() + "\tEndereco: " + banco.getEndereco());
         System.out.println("-----------------------------------------------");
 
         for (Agencia a : banco.getAgencias()) {

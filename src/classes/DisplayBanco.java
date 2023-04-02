@@ -16,7 +16,7 @@ public class DisplayBanco {
     public void login() {
         clearScreen();
 
-        System.out.println("******* BEM-VINDE AO BANQUE UNESP *******\n");
+        System.out.println("******* BEM-VINDO AO " + meuBanco.getNome() + "*******\n");
 
         int numAgencia, numConta;
         String senha;
