@@ -4,57 +4,70 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Agencia {
-    private int codigo;
-    private String nome;
-    private String endereco;
-    private List<Conta> contas = new ArrayList<>();
+    private int codigo; //Código da agência
+    private String nome; //Nome da agência
+    private String endereco; //Endereço da agência
+    private List<Conta> contas = new ArrayList<>(); //Lista de contas da agência
 
+    /**
+     * Método construtor da classe Agencia
+     *
+     * @param codigo   Número da agência
+     * @param nome     Nome da agência
+     * @param endereco Endereço da agência
+     */
     public Agencia(int codigo, String nome, String endereco) {
         this.codigo = codigo;
         this.nome = nome;
         this.endereco = endereco;
     }
 
+    /**
+     * @return Código cadastrado da agência
+     */
     public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
+    /**
+     * @return Nome cadastrado da agência
+     */
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
+    /**
+     * @return Endereço cadastrado da agência
+     */
     public String getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
+    /**
+     * @return Lista de contas cadastradas da agência
+     */
     public List<Conta> getContas() {
         return contas;
     }
 
+    /**
+     * Recebe uma conta a ser adicionada na lista de contas da agência
+     *
+     * @param conta Conta a ser adicionada na lista
+     */
     public void cadastrarConta(Conta conta) {
         contas.add(conta);
     }
 
     /**
      * Método usado para buscar uma conta específica dentre a lista de contas no objeto agência instanciado
+     *
      * @param numConta numero da conta a ser procurada
      * @return Objeto Conta caso encontrada | null caso não econtre
      */
     public Conta buscarConta(int numConta) {
         for (Conta c : contas) {
-            if(c.getNumero() == numConta)
+            if (c.getNumero() == numConta)
                 return c;
 
         }
@@ -64,13 +77,14 @@ public class Agencia {
     /**
      * Sobrecarga do método buscar conta, dessa vez recebe também como parametro uma String 'senha', esse método será
      * usado para 'logar' uma conta no banco
+     *
      * @param numConta numero da conta a ser procurada
-     * @param senha senha da conta a ser procurada
+     * @param senha    senha da conta a ser procurada
      * @return Objeto Conta caso encontrada | null caso não econtre
      */
     public Conta buscarConta(int numConta, String senha) {
         for (Conta c : contas) {
-            if(c.getNumero() == numConta && c.validarSenha(senha))
+            if (c.getNumero() == numConta && c.validarSenha(senha))
                 return c;
 
         }

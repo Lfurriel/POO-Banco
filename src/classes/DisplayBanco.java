@@ -5,14 +5,28 @@ import java.util.Scanner;
 public class DisplayBanco {
     private final Banco meuBanco;
 
+    /**
+     * Método construtor da classe DisplayBanco instanciando um novo obj Banco
+     *
+     * @param numero   Número do banco
+     * @param nome     Nome do banco
+     * @param cnpj     CNPJ do banco
+     * @param endereco Endereço do banco
+     */
     public DisplayBanco(int numero, String nome, String cnpj, String endereco) {
         this.meuBanco = new Banco(numero, nome, cnpj, endereco);
     }
 
+    /**
+     * @return Banco cadastrado
+     */
     public Banco getMeuBanco() {
         return meuBanco;
     }
 
+    /**
+     * Tela inicial do Banco, responsável por ler agencia conta e senha do utilizador
+     */
     public void login() {
         clearScreen();
 
@@ -37,6 +51,9 @@ public class DisplayBanco {
         telaUsuario();
     }
 
+    /**
+     * Tela de utilizador, permite escolher dentre as opções a próxima operação a ser feita
+     */
     private void telaUsuario() {
         Scanner sc = new Scanner(System.in);
         int op;
@@ -67,22 +84,34 @@ public class DisplayBanco {
 
     }
 
+    /**
+     * Opção 1) Imprime na tela o saldo do cliente
+     */
     private void operacaoSaldo() {
         System.out.print("Seu saldo: R$" + meuBanco.getContaLogada().getSaldo());
     }
 
+    /**
+     * Opção 2) Permite o usuário digitar um valor a ser sacado de sua conta
+     */
     private void operacaoSaque() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Digite o valor a ser sacado: ");
         meuBanco.realizarSaque(sc.nextDouble());
     }
 
+    /**
+     * Opção 3) Permite o usuário digitar um valor a ser depositado em sua conta
+     */
     private void operacaoDeposito() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Digite o valor a ser depositado: ");
         meuBanco.realizarDeposito(sc.nextDouble());
     }
 
+    /**
+     * Opção 4) Permite o usuário buscar uma conta do banco que receberá uma tranferência
+     */
     private void operacaoTransferencia() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Digite o numero da agência: ");
@@ -94,17 +123,26 @@ public class DisplayBanco {
 
     }
 
+    /**
+     * Opção 5) Lê uma chave pix (CPF) do usuário
+     */
     private void operacaoPix() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Digite a chave pix (cpf): ");
         meuBanco.pix(sc.nextLine());
     }
 
+    /**
+     * Opção 6) Desloga o cliente de sua conta
+     */
     private void operacaoSair() {
         meuBanco.deslogarConta();
         login();
     }
 
+    /**
+     * Método útil para limpar o terminal
+     */
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();

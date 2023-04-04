@@ -14,9 +14,10 @@ public class Banco {
 
     /**
      * Método construtor da classe Banco
-     * @param numero Número do banco
-     * @param nome Nome do banco
-     * @param cnpj CNPJ do banco
+     *
+     * @param numero   Número do banco
+     * @param nome     Nome do banco
+     * @param cnpj     CNPJ do banco
      * @param endereco Endereço do banco
      */
     public Banco(int numero, String nome, String cnpj, String endereco) {
@@ -71,9 +72,10 @@ public class Banco {
     /**
      * Método usado para setar o atributo 'contaLogada'. Usa inicialmente o método buscarAgencia para encontrar a agência
      * correspondente com o parâmetro 'numAgencia' e em seguida buscarConta com os parâmetros 'numConta' e 'senha'
+     *
      * @param numAgencia Número da agência
-     * @param numConta Número da conta
-     * @param senha Senha do titular da conta
+     * @param numConta   Número da conta
+     * @param senha      Senha do titular da conta
      */
     public void logarCliente(int numAgencia, int numConta, String senha) {
         Agencia agencia = buscarAgencia(numAgencia);
@@ -96,6 +98,7 @@ public class Banco {
 
     /**
      * Adiciona na lista de agências do objeto Banco uma nova agência criada
+     *
      * @param agencia Objeto instânciado de Agencia
      */
     public void cadastrarAgencia(Agencia agencia) {
@@ -104,9 +107,10 @@ public class Banco {
 
     /**
      * Instancia um novo objeto de Agencia e adiciona na lista de agências do objeto Banco
+     *
      * @param numAgencia Número da nova agência
-     * @param nome Nome da nova agência
-     * @param endereco Endereço da nova agência
+     * @param nome       Nome da nova agência
+     * @param endereco   Endereço da nova agência
      */
     public void cadastrarAgencia(int numAgencia, String nome, String endereco) {
         Agencia agencia = new Agencia(numAgencia, nome, endereco);
@@ -115,6 +119,7 @@ public class Banco {
 
     /**
      * Percorre a lista de agências do objeto Banco buscando uma agência que corresponde com o parâmetro codigo
+     *
      * @param codigo Numero da agência
      * @return Objeto de Agencia caso encontrado || null caso contrário
      */
@@ -128,6 +133,7 @@ public class Banco {
 
     /**
      * Método intermediário para realizar um saque partindo do atributo 'contaLogada'
+     *
      * @param valor Valor a ser sacado
      * @return true caso foi possível realizar o saque || false caso contrário
      */
@@ -137,6 +143,7 @@ public class Banco {
 
     /**
      * Método intermediário para realizar um depósito partindo do atributo 'contaLogada'
+     *
      * @param valor Valor a ser depositado
      */
     public void realizarDeposito(double valor) {
@@ -146,8 +153,9 @@ public class Banco {
     /**
      * Buscamos a agência e conta que irá receber a tranferência, realiza um saque do atributo 'contaLogada' e, caso
      * foi possível realizar o saque, deposita o mesmo valor na conta antes encontrada
+     *
      * @param numAgencia Agencia da conta que receberá a transferêcnia
-     * @param numConta Número da conta que receberá a transferêcnia
+     * @param numConta   Número da conta que receberá a transferêcnia
      */
     public void transferencia(int numAgencia, int numConta) {
 
@@ -174,12 +182,13 @@ public class Banco {
     /**
      * Busca uma conta partindo do parâmetro cpf e realiza o depósito na mesma caso a operação 'realizarSaque'
      * foi possível partindo de 'contaLoada'
+     *
      * @param cpf CPF (chave pix) da conta que irá receber a transferência
      */
     public void pix(String cpf) {
         Scanner sc = new Scanner(System.in);
         Conta c = buscarChavePix(cpf);
-        if(c != null) {
+        if (c != null) {
             System.out.println("Digite o valor a ser transferido para " + c.getNome());
             System.out.print("Valor: R$");
             double valor = sc.nextDouble();
@@ -192,6 +201,7 @@ public class Banco {
 
     /**
      * Busca dentre as agências e contas de Banco uma conta cujo cpf corresponda ao parâmetro passado
+     *
      * @param cpf CPF (chave pix)
      * @return Objeto da classe conta caso encontrada || null caso contrário
      */

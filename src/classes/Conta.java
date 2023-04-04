@@ -1,16 +1,25 @@
 package classes;
 
 public class Conta {
-    private int numero;
-    private double saldo;
-    private String nome;
-    private String endereco;
-    private String cpf;
-    private String dataNascimento;
-    private String senha;
+    private int numero; //Número da conta
+    private double saldo; //Saldo da conta
+    private String nome; //Nome do cliente
+    private String endereco; //Endereço do cliente
+    private String cpf; //CPF do cliente
+    private String dataNascimento; //Data de nascimento do cliente
+    private String senha; //Senha para acessar a conta
 
-    //Nome # Data Nascimento # Endereço # CPF # Saldo # Núumero da agência # Número da Conta # senha.
-
+    /**
+     * Método construtor da classe Conta
+     *
+     * @param numero         Número da conta
+     * @param saldo          Saldo da conta
+     * @param nome           Nome do cliente
+     * @param endereco       Endereço do cliente
+     * @param cpf            CPF do cliente
+     * @param dataNascimento Data de nascimento do cliente
+     * @param senha          Senha da conta
+     */
     public Conta(int numero, double saldo, String nome, String endereco, String cpf, String dataNascimento, String senha) {
         this.numero = numero;
         this.saldo = saldo;
@@ -21,60 +30,66 @@ public class Conta {
         this.senha = senha;
     }
 
+    /**
+     * @return Número cadastrado da conta
+     */
     public int getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
-
+    /**
+     * @return Saldo disponível na conta
+     */
     public double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
-
+    /**
+     * @return Nome cadastrado da conta
+     */
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
+    /**
+     * @return Endereço cadastrado da conta
+     */
     public String getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
+    /**
+     * @return CPF cadastrado da conta
+     */
     public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
+    /**
+     * @return Data de nascimento cadastrada da conta
+     */
     public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
+    /**
+     * Adiciona valor ao saldo da conta
+     *
+     * @param valor Quantia a ser depositada
+     */
     public void despositar(double valor) {
         this.saldo += valor;
     }
 
-    public boolean sacar (double valor) {
-        if(this.saldo < valor) {
+    /**
+     * Verifica se é possível fazer uma retirada de saldo e a efetua caso sim
+     *
+     * @param valor Quantia a ser sacada
+     * @return TRUE caso foi possível realizar o saque || FALSE caso contrário
+     */
+    public boolean sacar(double valor) {
+        if (this.saldo < valor) {
             System.out.println("Não é possivel sacar, saldo insuficiente");
             return false;
         } else {
@@ -83,13 +98,26 @@ public class Conta {
         }
     }
 
+    /**
+     * Método utilizado para alterar a senha da conta. Senha só é substituída caso o usuário digite a senha
+     * antiga corretamente
+     *
+     * @param senhaAtual Senha já cadastrada
+     * @param novaSenha  Senha para qual será alterada
+     */
     public void setSenha(String senhaAtual, String novaSenha) {
-        if(validarSenha(senhaAtual))
+        if (validarSenha(senhaAtual))
             this.senha = novaSenha;
         else
             System.out.println("Senha inválida");
     }
 
+    /**
+     * Utilizado para confirmar se a senha digitada é a mesma já cadastrada
+     *
+     * @param senhaComparar Senha digitada
+     * @return TRUE caso as senhas batem || FALSE caso a senha digitada esteja errada
+     */
     public boolean validarSenha(String senhaComparar) {
         return senhaComparar.equals(this.senha);
     }
