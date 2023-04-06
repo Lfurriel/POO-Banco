@@ -65,11 +65,12 @@ public class DisplayBanco {
             System.out.println("\t3- Depositar");
             System.out.println("\t4- Transferência");
             System.out.println("\t5- Pix");
-            System.out.println("\t6- SAIR");
+            System.out.println("\t6- Consultar extrato");
+            System.out.println("\t7- SAIR");
 
             op = sc.nextInt();
 
-            if (op < 1 || op > 5)
+            if (op < 1 || op > 6)
                 System.out.println("OPÇÃO INVÁLIDA");
 
             switch (op) {
@@ -78,9 +79,10 @@ public class DisplayBanco {
                 case 3 -> operacaoDeposito();
                 case 4 -> operacaoTransferencia();
                 case 5 -> operacaoPix();
-                case 6 -> operacaoSair();
+                case 6 -> operacaoExtrato();
+                case 7 -> operacaoSair();
             }
-        } while (op != 6);
+        } while (op != 7);
 
     }
 
@@ -133,7 +135,14 @@ public class DisplayBanco {
     }
 
     /**
-     * Opção 6) Desloga o cliente de sua conta
+     * Opção 6) Imprime o extrato da conta
+     */
+    private void operacaoExtrato() {
+        meuBanco.imprimirExtrato();
+    }
+
+    /**
+     * Opção 7) Desloga o cliente de sua conta
      */
     private void operacaoSair() {
         meuBanco.deslogarConta();

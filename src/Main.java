@@ -11,13 +11,12 @@ public class Main {
     public static void main(String[] args) throws Exception {
         DisplayBanco displayBanco = lerBanco();
         //imprimir(displayBanco);
-
         displayBanco.login();
     }
 
     public static DisplayBanco lerBanco() throws Exception {
         DisplayBanco displayBanco = null;
-        File arquivo = new File("C:\\Users\\Lucas Furriel\\Downloads\\banco.txt ");
+        File arquivo = new File("files\\banco.txt ");
         Scanner scanner;
         try {
             scanner = new Scanner(arquivo);
@@ -40,9 +39,9 @@ public class Main {
     private static void lerAgencias(Banco banco) throws Exception {
 
         /*  Jardins # 0 # Ladeira de Ribeiro, 27, Araraquara-SP
-            NOME    #   NUMERO  #   ENDERECO */
+            NOME # NUMERO # ENDERECO */
 
-        File arquivo = new File("C:\\Users\\Lucas Furriel\\Downloads\\agencias.txt ");
+        File arquivo = new File("files\\agencias.txt ");
         Scanner scanner;
         try {
             scanner = new Scanner(arquivo);
@@ -69,7 +68,7 @@ public class Main {
         /*Juan Peixoto#17/05/1933#Residencial Moraes, 956,Carvalho-AC#66933855163#4338.0#1#46246#190705
          * nome # nascimento # endereco # cpf # saldo # agencia # conta # senha*/
 
-        File arquivo = new File("C:\\Users\\Lucas Furriel\\Downloads\\contas.txt ");
+        File arquivo = new File("files\\contas.txt ");
         Scanner scanner;
         try {
             scanner = new Scanner(arquivo);

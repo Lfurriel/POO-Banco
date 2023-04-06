@@ -138,6 +138,7 @@ public class Banco {
      * @return true caso foi possível realizar o saque || false caso contrário
      */
     public boolean realizarSaque(double valor) {
+        contaLogada.adicionarExtrato((valor * -1), "SAQUE", contaLogada.getNome());
         return contaLogada.sacar(valor);
     }
 
@@ -147,6 +148,7 @@ public class Banco {
      * @param valor Valor a ser depositado
      */
     public void realizarDeposito(double valor) {
+        contaLogada.adicionarExtrato(valor, "DEPÓSITO", contaLogada.getNome());
         contaLogada.despositar(valor);
     }
 
@@ -168,9 +170,11 @@ public class Banco {
                 System.out.println("Digite o valor a ser transferido para " + conta.getNome());
                 System.out.print("Valor: R$");
                 double valor = sc.nextDouble();
-                if (realizarSaque(valor))
+                if (contaLogada.sacar(valor)) {
+                    contaLogada.adicionarExtrato((valor * -1), "TRANFERÊNCIA", conta.getNome());
+                    conta.adicionarExtrato(valor, "TRANFERÊNCIA", contaLogada.getNome());
                     conta.despositar(valor);
-                else
+                } else
                     System.out.println("Saldo insuficiente para transferência");
             } else
                 System.out.println("Conta não encontrada");
@@ -192,9 +196,11 @@ public class Banco {
             System.out.println("Digite o valor a ser transferido para " + c.getNome());
             System.out.print("Valor: R$");
             double valor = sc.nextDouble();
-            if (realizarSaque(valor))
+            if (contaLogada.sacar(valor)) {
+                contaLogada.adicionarExtrato((valor * -1), "PIX", c.getNome());
+                c.adicionarExtrato(valor, "PIX", contaLogada.getNome());
                 c.despositar(valor);
-            else
+            } else
                 System.out.println("Saldo insuficiente para transferência");
         }
     }
@@ -213,5 +219,11 @@ public class Banco {
             }
         }
         return null;
+    }
+
+    public void imprimirExtrato() {
+        for(Extrato e : contaLogada.getExtratos()) {
+            System.out.println(e.getValor() + "- " + e.getData() + " - " + e.getOperacao() + " - " + e.getNome());
+        }
     }
 }

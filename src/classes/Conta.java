@@ -1,13 +1,19 @@
 package classes;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Conta {
-    private int numero; //Número da conta
+    private final int numero; //Número da conta
     private double saldo; //Saldo da conta
-    private String nome; //Nome do cliente
-    private String endereco; //Endereço do cliente
-    private String cpf; //CPF do cliente
-    private String dataNascimento; //Data de nascimento do cliente
+    private final String nome; //Nome do cliente
+    private final String endereco; //Endereço do cliente
+    private final String cpf; //CPF do cliente
+    private final String dataNascimento; //Data de nascimento do cliente
     private String senha; //Senha para acessar a conta
+
+    private List<Extrato> extratos;
 
     /**
      * Método construtor da classe Conta
@@ -28,6 +34,7 @@ public class Conta {
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
         this.senha = senha;
+        this.extratos = new ArrayList<>();
     }
 
     /**
@@ -64,6 +71,10 @@ public class Conta {
      */
     public String getCpf() {
         return cpf;
+    }
+
+    public List<Extrato> getExtratos() {
+        return extratos;
     }
 
     /**
@@ -121,4 +132,9 @@ public class Conta {
     public boolean validarSenha(String senhaComparar) {
         return senhaComparar.equals(this.senha);
     }
+
+    public void adicionarExtrato(double valor, String operacao, String nome) {
+        extratos.add(new Extrato(valor, LocalDateTime.now(), operacao, nome));
+    }
+
 }
