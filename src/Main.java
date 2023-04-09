@@ -32,6 +32,7 @@ public class Main {
             displayBanco = new DisplayBanco(numero, campos[0], campos[1], campos[2]);
         }
 
+        assert displayBanco != null;
         lerAgencias(displayBanco.getMeuBanco());
         return displayBanco;
     }

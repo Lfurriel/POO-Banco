@@ -3,10 +3,10 @@ package classes;
 import java.time.LocalDateTime;
 
 public class Extrato {
-    private double valor; //Valor da transação
-    private LocalDateTime data; //Data quando a transação foi realizada
-    private String operacao; //Operação realizada
-    private String nome; //Nome pra onde foi o dinheiro
+    private final double valor; //Valor da transação
+    private final LocalDateTime data; //Data quando a transação foi realizada
+    private final String operacao; //Operação realizada
+    private final String nome; //Nome pra onde foi o dinheiro
 
     public Extrato(double valor, LocalDateTime data, String operacao, String nome) {
         this.valor = valor;

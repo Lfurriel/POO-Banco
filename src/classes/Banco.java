@@ -135,11 +135,10 @@ public class Banco {
      * Método intermediário para realizar um saque partindo do atributo 'contaLogada'
      *
      * @param valor Valor a ser sacado
-     * @return true caso foi possível realizar o saque || false caso contrário
      */
-    public boolean realizarSaque(double valor) {
+    public void realizarSaque(double valor) {
         contaLogada.adicionarExtrato((valor * -1), "SAQUE", contaLogada.getNome());
-        return contaLogada.sacar(valor);
+        contaLogada.sacar(valor);
     }
 
     /**
