@@ -63,7 +63,7 @@ public class Agencia {
      * Método usado para buscar uma conta específica dentre a lista de contas no objeto agência instanciado
      *
      * @param numConta numero da conta a ser procurada
-     * @return Objeto Conta caso encontrada | null caso não econtre
+     * @return Objeto Conta caso encontrada || null caso não econtre
      */
     public Conta buscarConta(int numConta) {
         for (Conta c : contas) {
@@ -80,7 +80,7 @@ public class Agencia {
      *
      * @param numConta numero da conta a ser procurada
      * @param senha    senha da conta a ser procurada
-     * @return Objeto Conta caso encontrada | null caso não econtre
+     * @return Objeto Conta caso encontrada || null caso não econtre
      */
     public Conta buscarConta(int numConta, String senha) {
         boolean encontrada = false;

@@ -56,7 +56,7 @@ public class Banco {
     }
 
     /**
-     * @return Atributo 'contaLogada'
+     * @return Conta que está atualmente logada no sistema || null caso não há conta logada
      */
     public Conta getContaLogada() {
         return contaLogada;
@@ -115,7 +115,7 @@ public class Banco {
     }
 
     /**
-     * Percorre a lista de agências do objeto Banco buscando uma agência que corresponde com o parâmetro codigo
+     * Percorre a lista de agências do objeto Banco buscando uma agência que corresponde com o parâmetro 'codigo'
      *
      * @param codigo Numero da agência
      * @return Objeto de Agencia caso encontrado || null caso contrário
@@ -165,10 +165,10 @@ public class Banco {
             if (conta != null) {
                 System.out.println("Digite o valor a ser transferido para " + conta.getNome());
                 System.out.print("Valor: R$");
-                double valor = sc.nextDouble();
+                double valor = Math.abs(sc.nextDouble());
                 if (contaLogada.sacar(valor)) {
-                    contaLogada.adicionarExtrato((valor * -1), "TRANFERÊNCIA", conta.getNome());
-                    conta.adicionarExtrato(valor, "TRANFERÊNCIA", contaLogada.getNome());
+                    contaLogada.adicionarExtrato((valor * -1), "TRANFERÊNCIA", conta.getNome()); // Adicionamos extrato na conta que esta TRANSFERINDO
+                    conta.adicionarExtrato(valor, "TRANFERÊNCIA", contaLogada.getNome()); // Adicionamos extrato na conta que esta RECEBENDO a transferência
                     conta.despositar(valor);
                 } else
                     System.out.println("Saldo insuficiente para transferência");
@@ -191,10 +191,10 @@ public class Banco {
         if (c != null) {
             System.out.println("Digite o valor a ser transferido para " + c.getNome());
             System.out.print("Valor: R$");
-            double valor = sc.nextDouble();
+            double valor = Math.abs(sc.nextDouble());
             if (contaLogada.sacar(valor)) {
-                contaLogada.adicionarExtrato((valor * -1), "PIX", c.getNome());
-                c.adicionarExtrato(valor, "PIX", contaLogada.getNome());
+                contaLogada.adicionarExtrato((valor * -1), "PIX", c.getNome()); // Adicionamos extrato na conta que esta TRANSFERINDO o pix
+                c.adicionarExtrato(valor, "PIX", contaLogada.getNome()); // Adicionamos extrato na conta que esta RECEBENDO o pix
                 c.despositar(valor);
             } else
                 System.out.println("Saldo insuficiente para transferência");
@@ -217,8 +217,11 @@ public class Banco {
         return null;
     }
 
+    /**
+     * Passa por toda a lista de extratos da conta e imprime os valores
+     */
     public void imprimirExtrato() {
-        for(Extrato e : contaLogada.getExtratos()) {
+        for (Extrato e : contaLogada.getExtratos()) {
             System.out.println(e.getValor() + "- " + e.getData() + " - " + e.getOperacao() + " - " + e.getNome());
         }
     }

@@ -13,8 +13,8 @@ public class Conta {
     private final String dataNascimento; //Data de nascimento do cliente
     private String senha; //Senha para acessar a conta
     private List<Extrato> extratos; //Extrato da conta
-    private boolean bloqueada;
-    private int erros;
+    private boolean bloqueada; //Status da conta
+    private int erros; //Contagem de tentativas erradas ao entrar na conta
 
     /**
      * Método construtor da classe Conta
@@ -76,6 +76,9 @@ public class Conta {
         return cpf;
     }
 
+    /**
+     * @return lista de extratos da conta
+     */
     public List<Extrato> getExtratos() {
         return extratos;
     }
@@ -150,10 +153,21 @@ public class Conta {
         return senhaComparar.equals(this.senha);
     }
 
+    /**
+     * Adiciona um novo Extrato a lista de extratos da conta
+     *
+     * @param valor    Valor da transação
+     * @param operacao Operação que foi realizada  "SAQUE", "DEPOSITO", "TRANSFERÊNCIA", "PIX"
+     * @param nome     Nome para quem foi realizado a operação
+     */
     public void adicionarExtrato(double valor, String operacao, String nome) {
         extratos.add(new Extrato(valor, LocalDateTime.now(), operacao, nome));
     }
 
+    /**
+     * Quando a senha é digitada incorretamente aumentamos a quantidade de erros em 1
+     * ao atingir 3 erros a conta é bloqueada
+     */
     public void senhaIncorreta() {
         this.erros++;
         if (erros == 3)

@@ -25,7 +25,7 @@ public class DisplayBanco {
     }
 
     /**
-     * Tela inicial do Banco, responsável por ler agencia conta e senha do utilizador
+     * Tela inicial do Banco, responsável por ler agencia conta e senha do usuário
      */
     public void login() {
         clearScreen();
@@ -52,7 +52,7 @@ public class DisplayBanco {
     }
 
     /**
-     * Tela de utilizador, permite escolher dentre as opções a próxima operação a ser feita
+     * Tela de usuário, permite escolher dentre as opções a próxima operação a ser feita
      */
     private void telaUsuario() {
         Scanner sc = new Scanner(System.in);
@@ -99,7 +99,7 @@ public class DisplayBanco {
     private void operacaoSaque() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Digite o valor a ser sacado: ");
-        meuBanco.realizarSaque(sc.nextDouble());
+        meuBanco.realizarSaque(Math.abs(sc.nextDouble()));
     }
 
     /**
@@ -108,7 +108,7 @@ public class DisplayBanco {
     private void operacaoDeposito() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Digite o valor a ser depositado: ");
-        meuBanco.realizarDeposito(sc.nextDouble());
+        meuBanco.realizarDeposito(Math.abs(sc.nextDouble()));
     }
 
     /**
@@ -117,9 +117,9 @@ public class DisplayBanco {
     private void operacaoTransferencia() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Digite o numero da agência: ");
-        int numAgencia = sc.nextInt();
+        int numAgencia = Math.abs(sc.nextInt());
         System.out.print("Digite o numero da conta: ");
-        int numConta = sc.nextInt();
+        int numConta = Math.abs(sc.nextInt());
 
         meuBanco.transferencia(numAgencia, numConta);
 

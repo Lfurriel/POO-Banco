@@ -15,18 +15,30 @@ public class Extrato {
         this.nome = nome;
     }
 
+    /**
+     * @return Valor do extrato
+     */
     public double getValor() {
         return valor;
     }
 
+    /**
+     * @return Data que foi realizada a operação
+     */
     public LocalDateTime getData() {
         return data;
     }
 
+    /**
+     * @return Operação que foi realizada "SAQUE", "DEPOSITO", "TRANSFERÊNCIA", "PIX"
+     */
     public String getOperacao() {
         return operacao;
     }
 
+    /**
+     * @return Nome para quem foi transferido
+     */
     public String getNome() {
         return nome;
     }
