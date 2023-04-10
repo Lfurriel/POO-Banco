@@ -12,8 +12,9 @@ public class Conta {
     private final String cpf; //CPF do cliente
     private final String dataNascimento; //Data de nascimento do cliente
     private String senha; //Senha para acessar a conta
-
-    private List<Extrato> extratos;
+    private List<Extrato> extratos; //Extrato da conta
+    private boolean bloqueada;
+    private int erros;
 
     /**
      * Método construtor da classe Conta
@@ -35,6 +36,8 @@ public class Conta {
         this.dataNascimento = dataNascimento;
         this.senha = senha;
         this.extratos = new ArrayList<>();
+        this.bloqueada = false;
+        this.erros = 0;
     }
 
     /**
@@ -82,6 +85,20 @@ public class Conta {
      */
     public String getDataNascimento() {
         return dataNascimento;
+    }
+
+    /**
+     * @return Se a conta está bloqueada ou não
+     */
+    public boolean isBloqueada() {
+        return bloqueada;
+    }
+
+    /**
+     * Quando o usuário acertar a sua senha zeramos a contagem de erros para bloqueio
+     */
+    public void zeraErros() {
+        this.erros = 0;
     }
 
     /**
@@ -135,6 +152,12 @@ public class Conta {
 
     public void adicionarExtrato(double valor, String operacao, String nome) {
         extratos.add(new Extrato(valor, LocalDateTime.now(), operacao, nome));
+    }
+
+    public void senhaIncorreta() {
+        this.erros++;
+        if (erros == 3)
+            this.bloqueada = true;
     }
 
 }

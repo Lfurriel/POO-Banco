@@ -83,11 +83,26 @@ public class Agencia {
      * @return Objeto Conta caso encontrada | null caso não econtre
      */
     public Conta buscarConta(int numConta, String senha) {
-        for (Conta c : contas) {
-            if (c.getNumero() == numConta && c.validarSenha(senha))
-                return c;
+        boolean encontrada = false;
 
+        for (Conta c : contas) {
+            if (c.getNumero() == numConta) {
+                encontrada = true;
+                if (c.validarSenha(senha)) {
+                    if (!c.isBloqueada()) {
+                        c.zeraErros();
+                        return c;
+                    } else
+                        System.out.println("Essa conta está bloqueada, por favor contate o seu gerente");
+                } else {
+                    System.out.println("SENHA INCORRETA!");
+                    c.senhaIncorreta();
+                }
+            }
         }
+        if (!encontrada)
+            System.out.println("Conta não encontrada");
+
         return null;
     }
 }

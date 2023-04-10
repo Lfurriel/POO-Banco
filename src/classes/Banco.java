@@ -81,9 +81,6 @@ public class Banco {
         Agencia agencia = buscarAgencia(numAgencia);
         if (agencia != null) {
             contaLogada = agencia.buscarConta(numConta, senha);
-            if (contaLogada == null) {
-                System.out.println("Conta não encontrada ou senha incorreta");
-            }
         } else {
             System.out.println("Agência não encontrada");
         }
