@@ -11,10 +11,26 @@ import java.util.List;
 
 
 public class Agencia {
-    private int codigo; //Código da agência
-    private String nome; //Nome da agência
-    private String endereco; //Endereço da agência
-    private List<Conta> contas = new ArrayList<>(); //Lista de contas da agência
+
+    /**
+     * Código da agência
+     */
+    private int codigo;
+
+    /**
+     * Nome da agência
+     */
+    private String nome;
+
+    /**
+     * Endereço da agência
+     */
+    private String endereco;
+
+    /**
+     * Lista de contas da agência
+     */
+    private List<Conta> contas = new ArrayList<>();
 
     /**
      * Método construtor da classe Agencia

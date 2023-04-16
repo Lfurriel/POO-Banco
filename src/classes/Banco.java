@@ -11,12 +11,36 @@ import java.util.Scanner;
  */
 
 public class Banco {
-    private int numero; //Número do banco
-    private String nome; //Nome do banco
-    private String cnpj; //CNPJ do banco
-    private String endereco; //Endereço do banco
-    private Conta contaLogada; //Conta que será realizada as operações
-    private List<Agencia> agencias = new ArrayList<>(); //Lista das agências de banco
+
+    /**
+     * Número do banco
+     */
+    private int numero;
+
+    /**
+     * Nome do banco
+     */
+    private String nome;
+
+    /**
+     * CNPJ do banco
+     */
+    private String cnpj;
+
+    /**
+     * Endereço do banco
+     */
+    private String endereco;
+
+    /**
+     * Conta que será realizada as operações
+     */
+    private Conta contaLogada;
+
+    /**
+     * Lista das agências de banco
+     */
+    private List<Agencia> agencias = new ArrayList<>();
 
     /**
      * Método construtor da classe Banco

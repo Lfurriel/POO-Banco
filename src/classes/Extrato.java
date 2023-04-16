@@ -10,11 +10,35 @@ import java.time.LocalDateTime;
 
 
 public class Extrato {
-    private final double valor; //Valor da transação
-    private final LocalDateTime data; //Data quando a transação foi realizada
-    private final String operacao; //Operação realizada
-    private final String nome; //Nome pra onde foi o dinheiro
 
+    /**
+     * Valor da transação
+     */
+    private final double valor;
+
+    /**
+     * Data quando a transação foi realizada
+     */
+    private final LocalDateTime data;
+
+    /**
+     * Operação realizada
+     */
+    private final String operacao;
+
+    /**
+     * Nome pra onde foi o dinheiro
+     */
+    private final String nome;
+
+    /**
+     * Método construtor da classe Extrato
+     *
+     * @param valor    Valor da transação
+     * @param data     Data da transação
+     * @param operacao Operação realizada
+     * @param nome     Nome para quem foi transferido o dinheiro
+     */
     public Extrato(double valor, LocalDateTime data, String operacao, String nome) {
         this.valor = valor;
         this.data = data;

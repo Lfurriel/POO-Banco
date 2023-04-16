@@ -13,6 +13,10 @@ import java.util.Scanner;
 
 
 public class DisplayBanco {
+
+    /**
+     * Objeto da classe Banco
+     */
     private final Banco meuBanco;
 
     /**

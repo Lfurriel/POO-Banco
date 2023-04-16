@@ -12,16 +12,56 @@ import java.util.List;
  */
 
 public class Conta {
-    private final int numero; //Número da conta
-    private double saldo; //Saldo da conta
-    private final String nome; //Nome do cliente
-    private final String endereco; //Endereço do cliente
-    private final String cpf; //CPF do cliente
-    private final String dataNascimento; //Data de nascimento do cliente
-    private String senha; //Senha para acessar a conta
-    private List<Extrato> extratos; //Extrato da conta
-    private boolean bloqueada; //Status da conta
-    private int erros; //Contagem de tentativas erradas ao entrar na conta
+
+    /**
+     * Número da conta
+     */
+    private final int numero;
+
+    /**
+     * Saldo da conta
+     */
+    private double saldo;
+
+    /**
+     * Nome do cliente
+     */
+    private final String nome;
+
+    /**
+     * Nome do cliente
+     */
+    private final String endereco;
+
+    /**
+     * CPF do cliente
+     */
+    private final String cpf;
+
+    /**
+     * Data de nascimento do cliente
+     */
+    private final String dataNascimento;
+
+    /**
+     * Senha para acessar a conta
+     */
+    private String senha;
+
+    /**
+     * Lista de extrato da conta
+     */
+    private List<Extrato> extratos;
+
+    /**
+     * Status da conta
+     */
+    private boolean bloqueada;
+
+    /**
+     * Contagem de tentativas erradas ao entrar na conta
+     */
+    private int erros;
 
     /**
      * Método construtor da classe Conta

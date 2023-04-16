@@ -7,6 +7,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/**
+ * Classe principal do projeto.
+ *
+ * @author Lucas Furriel Rodrigues
+ */
 public class Main {
     public static void main(String[] args) throws Exception {
         DisplayBanco displayBanco = lerBanco();
@@ -14,6 +19,12 @@ public class Main {
         displayBanco.login();
     }
 
+    /**
+     * Lê do arquivo 'banco.txt' informações para instanciar um objeto da classe Banco
+     *
+     * @return DisplayBanco criado
+     * @throws Exception Exeção genérica
+     */
     public static DisplayBanco lerBanco() throws Exception {
         DisplayBanco displayBanco = null;
         File arquivo = new File("files\\banco.txt ");
@@ -37,6 +48,12 @@ public class Main {
         return displayBanco;
     }
 
+    /**
+     * Lê do arquivo 'agencias.txt' informações para instânciar diversas agências
+     *
+     * @param banco Objeto Banco criado no método lerBanco
+     * @throws Exception Exeção genércia
+     */
     private static void lerAgencias(Banco banco) throws Exception {
 
         /*  Jardins # 0 # Ladeira de Ribeiro, 27, Araraquara-SP
@@ -63,6 +80,13 @@ public class Main {
 
         lerContas(banco);
     }
+
+    /**
+     * Lê do arquivo 'contas.txt' informações para instânciar diversas contas
+     *
+     * @param banco Objeto Banco criado no método lerBanco
+     * @throws Exception Exeção genércia
+     */
 
     private static void lerContas(Banco banco) throws Exception {
 
