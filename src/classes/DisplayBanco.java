@@ -2,11 +2,21 @@ package classes;
 
 import java.util.Scanner;
 
+/**
+ * Classe DisplayBanco que representa a interface de usuário para interagir com o banco.
+ * Permite ao usuário realizar operações bancárias como consultar saldo, sacar, depositar,
+ * fazer transferências, realizar pix, consultar extrato e sair.
+ * Utiliza a classe Banco para realizar as operações bancárias.
+ *
+ * @author Lucas Furriel Rodrigues
+ */
+
+
 public class DisplayBanco {
     private final Banco meuBanco;
 
     /**
-     * Método construtor da classe DisplayBanco instanciando um novo obj Banco
+     * Método construtor da classe DisplayBanco instanciando um novo objeto Banco
      *
      * @param numero   Número do banco
      * @param nome     Nome do banco

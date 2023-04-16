@@ -2,6 +2,13 @@ package classes;
 
 import java.time.LocalDateTime;
 
+/**
+ * Classe Extrao
+ *
+ * @author Lucas Furriel Rodrigues
+ */
+
+
 public class Extrato {
     private final double valor; //Valor da transação
     private final LocalDateTime data; //Data quando a transação foi realizada

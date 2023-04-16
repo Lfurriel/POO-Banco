@@ -3,6 +3,13 @@ package classes;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe Agência
+ *
+ * @author Lucas Furriel Rodrigues
+ */
+
+
 public class Agencia {
     private int codigo; //Código da agência
     private String nome; //Nome da agência

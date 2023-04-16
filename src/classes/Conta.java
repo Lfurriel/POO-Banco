@@ -4,6 +4,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Classe Conta
+ *
+ * @author Lucas Furriel Rodrigues
+ */
+
 public class Conta {
     private final int numero; //Número da conta
     private double saldo; //Saldo da conta

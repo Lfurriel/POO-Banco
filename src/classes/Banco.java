@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Classe Banco
+ *
+ * @author Lucas Furriel Rodrigues
+ */
+
 public class Banco {
     private int numero; //Número do banco
     private String nome; //Nome do banco
