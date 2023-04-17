@@ -1,6 +1,7 @@
 package classes;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Classe Extrao
@@ -19,7 +20,7 @@ public class Extrato {
     /**
      * Data quando a transação foi realizada
      */
-    private final LocalDateTime data;
+    private final String data;
 
     /**
      * Operação realizada
@@ -41,7 +42,7 @@ public class Extrato {
      */
     public Extrato(double valor, LocalDateTime data, String operacao, String nome) {
         this.valor = valor;
-        this.data = data;
+        this.data = data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
         this.operacao = operacao;
         this.nome = nome;
     }
@@ -56,7 +57,7 @@ public class Extrato {
     /**
      * @return Data que foi realizada a operação
      */
-    public LocalDateTime getData() {
+    public String getData() {
         return data;
     }
 

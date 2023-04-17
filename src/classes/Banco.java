@@ -252,7 +252,7 @@ public class Banco {
      */
     public void imprimirExtrato() {
         for (Extrato e : contaLogada.getExtratos()) {
-            System.out.println(e.getValor() + "- " + e.getData() + " - " + e.getOperacao() + " - " + e.getNome());
+            System.out.println(e.getValor() + " - " + e.getData() + " - " + e.getOperacao() + " - " + e.getNome());
         }
     }
 }

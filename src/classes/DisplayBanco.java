@@ -44,7 +44,7 @@ public class DisplayBanco {
     public void login() {
         clearScreen();
 
-        System.out.println("******* BEM-VINDO AO " + meuBanco.getNome() + "*******\n");
+        System.out.println("******* BEM-VINDO AO " + meuBanco.getNome() + " *******\n");
 
         int numAgencia, numConta;
         String senha;
@@ -73,6 +73,7 @@ public class DisplayBanco {
         int op;
 
         do {
+            System.out.println("Olá, " + meuBanco.getContaLogada().getNome());
 
             System.out.println("\n\t1- Consultar saldo");
             System.out.println("\t2- Sacar");
@@ -84,9 +85,6 @@ public class DisplayBanco {
 
             op = sc.nextInt();
 
-            if (op < 1 || op > 6)
-                System.out.println("OPÇÃO INVÁLIDA");
-
             switch (op) {
                 case 1 -> operacaoSaldo();
                 case 2 -> operacaoSaque();
@@ -95,6 +93,7 @@ public class DisplayBanco {
                 case 5 -> operacaoPix();
                 case 6 -> operacaoExtrato();
                 case 7 -> operacaoSair();
+                default -> System.out.println("OPÇÃO INVÁLIDA");
             }
         } while (op != 7);
 
